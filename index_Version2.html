@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Matla Primary School: Excellence in Education in Bloemfontein. Learn more about our programs, faculty, and news.">
+    <title>Matla Primary School - Excellence in Education</title>
+    <style>
+        /* --- All your CSS, unchanged for brevity --- */
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; overflow-x: hidden;}
+        nav {background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); backdrop-filter: blur(10px);}
+        .nav-container {max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem;}
+        .logo {color: white; font-size: 1.8rem; font-weight: bold; text-decoration: none;}
+        .nav-menu {display: flex; list-style: none; gap: 2rem;}
+        .nav-menu a {color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; padding: 0.5rem 1rem; border-radius: 25px;}
+        .nav-menu a:hover {background: rgba(255,255,255,0.2); transform: translateY(-2px);}
+        .hero {background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden;}
+        .hero::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="%23FFF" stop-opacity=".1"/><stop offset="1" stop-color="%23FFF" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>') repeat; opacity: 0.1; animation: float 20s ease-in-out infinite;}
+        @keyframes float {0%, 100% {transform: translateX(0) translateY(0);}25% {transform: translateX(1%) translateY(-1%);}50% {transform: translateX(-1%) translateY(1%);}75% {transform: translateX(1%) translateY(1%);}}
+        .hero-content {max-width: 800px; z-index: 2; position: relative;}
+        .hero h1 {font-size: 3.5rem; margin-bottom: 1rem; opacity: 0; animation: slideUp 1s ease forwards;}
+        .hero p {font-size: 1.2rem; margin-bottom: 2rem; opacity: 0; animation: slideUp 1s ease 0.3s forwards;}
+        .cta-button {display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 50px; font-weight: bold; transition: all 0.3s ease; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.3); opacity: 0; animation: slideUp 1s ease 0.6s forwards;}
+        .cta-button:hover {background: rgba(255,255,255,0.3); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
+        @keyframes slideUp {to {opacity: 1; transform: translateY(0);} from {opacity: 0; transform: translateY(30px);}}
+        section {padding: 5rem 2rem; max-width: 1200px; margin: 0 auto;}
+        .section-title {text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333; position: relative;}
+        .section-title::after {content: ''; width: 80px; height: 4px; background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px;}
+        .about {background: #f5f5f5;}
+        .about-content {display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem;}
+        .about-text {font-size: 1.1rem; line-height: 1.8;}
+        .about-image {width: 100%; height: 300px; background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; box-shadow: 0 20px 40px rgba(44, 44, 44, 0.3);}
+        .programs-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;}
+        .program-card {background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; border: 1px solid #f0f0f0;}
+        .program-card:hover {transform: translateY(-10px); box-shadow: 0 20px 50px rgba(44, 44, 44, 0.2);}
+        .program-card h3 {color: #2c2c2c; margin-bottom: 1rem; font-size: 1.3rem;}
+        .news {background: #f5f5f5;}
+        .news-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem;}
+        .news-card {background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease;}
+        .news-card:hover {transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15);}
+        .news-image {height: 200px; background: linear-gradient(45deg, #2c2c2c, #1a1a1a); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;}
+        .news-content {padding: 1.5rem;}
+        .news-date {color: #888; font-size: 0.9rem; margin-bottom: 0.5rem;}
+        .contact-content {display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;}
+        .contact-info {background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); color: white; padding: 2rem; border-radius: 20px;}
+        .contact-info h3 {margin-bottom: 1rem;}
+        .contact-form {display: flex; flex-direction: column; gap: 1rem;}
+        .contact-form input, .contact-form textarea {padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; transition: all 0.3s ease;}
+        .contact-form input:focus, .contact-form textarea:focus {outline: none; border-color: #2c2c2c; box-shadow: 0 0 10px rgba(44, 44, 44, 0.2);}
+        .submit-btn {background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;}
+        .submit-btn:hover {transform: translateY(-2px); box-shadow: 0 10px 20px rgba(44, 44, 44, 0.3);}
+        footer {background: #333; color: white; text-align: center; padding: 2rem;}
+        @media (max-width: 768px) {.nav-menu {display: none;} .hero h1 {font-size: 2.5rem;} .about-content, .contact-content {grid-template-columns: 1fr;} .programs-grid, .news-grid {grid-template-columns: 1fr;} .section-title {font-size: 2rem;}}
+        .fade-in {opacity: 0; transform: translateY(30px); transition: all 0.6s ease;}
+        .fade-in.visible {opacity: 1; transform: translateY(0);}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🎓 Matla Primary School</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Excellence in Education</h1>
+            <p>Empowering students to reach their full potential through innovative learning and personalized attention</p>
+            <a href="#programs" class="cta-button">Explore Our Programs</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title fade-in">About Our School</h2>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <p>At Matla Primary School, we believe every child has the potential to excel. Our dedicated teachers and innovative curriculum create an environment where learning thrives and students develop both academically and personally.</p>
+                <p>Founded with a commitment to providing quality primary education, we prepare our young learners for success in their educational journey. Our holistic approach combines rigorous academics with character development, ensuring our students are well-prepared for their future.</p>
+            </div>
+            <div class="about-image fade-in">🏫 Campus Image Placeholder</div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <h2 class="section-title fade-in">Our Programs</h2>
+        <div class="programs-grid">
+            <div class="program-card fade-in">
+                <h3>🎨 Arts & Creative Studies</h3>
+                <p>Nurture creativity through visual arts, music, drama, and digital media. Our state-of-the-art facilities provide students with professional-grade tools to express their artistic vision.</p>
+            </div>
+            <div class="program-card fade-in">
+                <h3>🔬 STEM Excellence</h3>
+                <p>Advanced science, technology, engineering, and mathematics programs that prepare students for careers in high-demand fields through hands-on learning and real-world applications.</p>
+            </div>
+            <div class="program-card fade-in">
+                <h3>🌍 Global Studies</h3>
+                <p>Develop global citizenship through language immersion, cultural exchange programs, and international perspectives on current events and history.</p>
+            </div>
+            <div class="program-card fade-in">
+                <h3>⚽ Athletics & Wellness</h3>
+                <p>Comprehensive sports programs and wellness education that promote physical fitness, teamwork, and healthy lifestyle choices for lifelong well-being.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="news">
+        <h2 class="section-title fade-in">Latest News</h2>
+        <div class="news-grid">
+            <div class="news-card fade-in">
+                <div class="news-image">📸 News Image</div>
+                <div class="news-content">
+                    <div class="news-date">March 15, 2024</div>
+                    <h3>Science Fair Winners Announced</h3>
+                    <p>Congratulations to our talented students who excelled in this year's regional science fair, bringing home top honors in multiple categories.</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-image">📸 News Image</div>
+                <div class="news-content">
+                    <div class="news-date">March 10, 2024</div>
+                    <h3>New Library Wing Opens</h3>
+                    <p>Our expanded library now features modern study spaces, a maker lab, and an extensive digital resources center to enhance student learning.</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-image">📸 News Image</div>
+                <div class="news-content">
+                    <div class="news-date">March 5, 2024</div>
+                    <h3>Spring Musical Auditions</h3>
+                    <p>Join us for the upcoming production of "Into the Woods." Auditions are open to all students - showcase your talent on our stage!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title fade-in">Contact Us</h2>
+        <div class="contact-content">
+            <div class="contact-info fade-in">
+                <h3>Get in Touch</h3>
+                <p><strong>📍 Address:</strong><br>15107 Phase 6<br>Bloemfontein 9309</p>
+                <p><strong>📞 Cellphone:</strong><br>079 992 0671</p>
+                <p><strong>✉️ Email:</strong><br>445802133@fsschoolsportal.gov.za</p>
+                <p><strong>🕒 Hours:</strong><br>Monday - Friday: 7:30 AM - 3:00 PM</p>
+            </div>
+            <form class="contact-form fade-in" action="#" method="post">
+                <label for="name">Your Name</label>
+                <input id="name" type="text" placeholder="Your Name" required>
+                <label for="email">Your Email</label>
+                <input id="email" type="email" placeholder="Your Email" required>
+                <label for="subject">Subject</label>
+                <input id="subject" type="text" placeholder="Subject" required>
+                <label for="message">Your Message</label>
+                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Matla Primary School. All rights reserved. | Committed to Educational Excellence</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
+            });
+        });
+        const observerOptions = {threshold: 0.1, rootMargin: '0px 0px -50px 0px'};
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible');}});
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => {observer.observe(el);});
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputs = this.querySelectorAll('input, textarea');
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!input.value.trim()) {isValid = false; input.style.borderColor = '#ff6b6b';}
+                else {input.style.borderColor = '#e0e0e0';}
+            });
+            if (isValid) {
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {current = section.getAttribute('id');}
+            });
+            navLinks.forEach(link => {
+                link.style.background = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.background = 'rgba(255,255,255,0.2)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
